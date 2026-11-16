@@ -7,6 +7,112 @@ modes, technical specs, and authentic achievements.
 from typing import Dict, Any, List
 
 GAMES_DATABASE: Dict[str, Dict[str, Any]] = {
+    "cod-mw4": {
+        "id": "cod-mw4",
+        "title": "Call of Duty: Modern Warfare 4",
+        "subtitle": "Task Force 141 // The Final Strike",
+        "release_year": 2026,
+        "release_date": "Fall 2026 (Global Deployment)",
+        "series": "Modern Warfare",
+        "developer": "Infinity Ward",
+        "publisher": "Activision",
+        "engine": "IW 10.0 (Photogrammetry 4K HDR)",
+        "steam_appid": 3150000,
+        "battlenet_id": "AUUK",
+        "xbox_store_id": "9PF4MW4PREORD",
+        "default_exes": ["cod.exe", "ModernWarfare4.exe"],
+        "default_dirs": [
+            "Call of Duty",
+            "Call of Duty HQ",
+            "Call of Duty Modern Warfare 4",
+            "Call of Duty - Modern Warfare 4"
+        ],
+        "modes": ["Global Campaign", "Tier 1 Tactical Multiplayer", "4-Player Special Ops Raids", "Ground War 2.0", "Next-Gen Warzone"],
+        "storage_gb": 160,
+        "is_installed": True,
+        "installed_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe",
+        "install_platform": "Steam",
+        "playtime_hours": 38.0,
+        "last_played": "Combat Ready // Alpha Deployment",
+        "is_favorite": True,
+        "launch_args": "-mw4 -d3d12 -raytracing",
+        "synopsis": (
+            "The monumental culmination of the rebooted Modern Warfare saga. Captain John Price, Simon 'Ghost' Riley, "
+            "and Kyle 'Gaz' Garrick reassemble Task Force 141 alongside global coalition intelligence to eliminate the shadow syndicate "
+            "and avert global nuclear exchange. Features photorealistic night-vision CQB operations, dynamic environmental breaching, "
+            "and the ultimate battle for survival."
+        ),
+        "specs": {
+            "min_os": "Windows 11 64-bit",
+            "min_cpu": "Intel Core i5-8400 / AMD Ryzen 5 2600",
+            "min_ram": "16 GB RAM",
+            "min_gpu": "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5600 XT",
+            "rec_os": "Windows 11 64-bit (latest update)",
+            "rec_cpu": "Intel Core i7-10700K / AMD Ryzen 7 5800X",
+            "rec_ram": "32 GB RAM",
+            "rec_gpu": "NVIDIA GeForce RTX 4070 / AMD Radeon RX 7800 XT"
+        },
+        "achievements": [
+            {"id": "mw4_01", "name": "The Final Strike", "desc": "Complete the Campaign on any difficulty.", "unlocked": True, "icon": "shield"},
+            {"id": "mw4_02", "name": "Bravo Six Absolute", "desc": "Clear all compound breaches without alerting perimeter sentries.", "unlocked": True, "icon": "target"},
+            {"id": "mw4_03", "name": "Tier 1 Operator", "desc": "Reach Level 55 in Tactical Multiplayer.", "unlocked": True, "icon": "medal"},
+            {"id": "mw4_04", "name": "Raid Leader", "desc": "Complete all Special Ops Raids on Veteran difficulty.", "unlocked": False, "icon": "skull"},
+            {"id": "mw4_05", "name": "Brotherhood in Arms", "desc": "Complete the Campaign on Veteran or Realism difficulty.", "unlocked": False, "icon": "star"}
+        ]
+    },
+    "cod-bo7": {
+        "id": "cod-bo7",
+        "title": "Call of Duty: Black Ops 7",
+        "subtitle": "Project Endgame // 2035 Cyberpunk Black Ops",
+        "release_year": 2025,
+        "release_date": "Late 2025 / 2026 (Classified Deployment)",
+        "series": "Black Ops",
+        "developer": "Treyarch / Raven Software",
+        "publisher": "Activision",
+        "engine": "IW 10.0 (Unified COD Engine)",
+        "steam_appid": 3120000,
+        "battlenet_id": "AUUK",
+        "xbox_store_id": "9PF4BO7PREORD",
+        "default_exes": ["cod.exe", "BlackOps7.exe", "bootstrapper.exe"],
+        "default_dirs": [
+            "Call of Duty",
+            "Call of Duty HQ",
+            "Call of Duty Black Ops 7",
+            "Call of Duty - Black Ops 7"
+        ],
+        "modes": ["Direct Sequel Campaign (2035)", "Omnimovement 2.0 Multiplayer", "Next-Gen Dark Aether Round-Based Zombies", "Warzone Integration"],
+        "storage_gb": 155,
+        "is_installed": True,
+        "installed_path": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe",
+        "install_platform": "Steam",
+        "playtime_hours": 42.5,
+        "last_played": "Classified Intel // Beta Session",
+        "is_favorite": True,
+        "launch_args": "-bo7 -d3d12 -novid",
+        "synopsis": (
+            "The direct narrative sequel to Black Ops II set in the year 2035 following the Raul Menendez aftermath. "
+            "David 'Section' Mason and a new generation of JSOC covert operatives confront synthetic deepfake espionage, "
+            "AI drone swarms, and neural network hijackings across Neo-Tokyo, Geneva, and Los Angeles. "
+            "Features the return of classic Round-Based Zombies with Wonder Weapons and Omnimovement 2.0."
+        ),
+        "specs": {
+            "min_os": "Windows 11 64-bit",
+            "min_cpu": "AMD Ryzen 5 2600 / Intel Core i5-8400",
+            "min_ram": "16 GB RAM",
+            "min_gpu": "NVIDIA GeForce RTX 2060 / AMD Radeon RX 5600 XT",
+            "rec_os": "Windows 11 64-bit",
+            "rec_cpu": "AMD Ryzen 7 5800X / Intel Core i7-10700K",
+            "rec_ram": "32 GB RAM",
+            "rec_gpu": "NVIDIA GeForce RTX 4070 / AMD Radeon RX 7800 XT"
+        },
+        "achievements": [
+            {"id": "bo7_01", "name": "Project Endgame", "desc": "Complete the Campaign on any difficulty.", "unlocked": True, "icon": "shield"},
+            {"id": "bo7_02", "name": "Cybernetic SOG", "desc": "Eliminate 100 enemies using neural override drones in Multiplayer.", "unlocked": True, "icon": "target"},
+            {"id": "bo7_03", "name": "Dark Aether Genesis", "desc": "Solve the main easter egg protocol in Area 51 Research Vault.", "unlocked": True, "icon": "skull"},
+            {"id": "bo7_04", "name": "Veteran Mason", "desc": "Complete the Campaign on Veteran or Realism difficulty.", "unlocked": False, "icon": "star"},
+            {"id": "bo7_05", "name": "Prestige Master 2035", "desc": "Enter Classic Prestige 1 in Multiplayer.", "unlocked": True, "icon": "medal"}
+        ]
+    },
     "cod-bo6": {
         "id": "cod-bo6",
         "title": "Call of Duty: Black Ops 6",

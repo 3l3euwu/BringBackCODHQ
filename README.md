@@ -10,7 +10,7 @@
 ## Key Features
 
 - **Exhaustive Franchise Database:**
-  Complete catalog of all 24+ mainline Call of Duty releases from the 2003 original to *Call of Duty: Black Ops 6 (2024)*, including the *Modern Warfare* saga, *Black Ops*, *World War II*, *Warzone*, and Classic eras.
+  Complete catalog of all 27 mainline Call of Duty releases from the 2003 original to *Call of Duty: Black Ops 6*, *Call of Duty: Black Ops 7*, and *Call of Duty: Modern Warfare 4*, including the *Modern Warfare* saga, *Black Ops*, *World War II*, *Warzone*, and Classic eras.
 - **Modern Tactical Military UI:**
   - Modern Warfare / Warzone inspired aesthetic: Dark Charcoal, Tactical Olive Drab, Camo overlays, and Desert Sand / Khaki highlights.
   - Three switchable military themes: **Tactical Olive Drab**, **Desert Sand & Khaki**, and **Night Ops Stealth Camo**.
@@ -115,3 +115,5 @@ or
 23. Call of Duty: Modern Warfare II (2022)
 24. Call of Duty: Modern Warfare III (2023)
 25. Call of Duty: Black Ops 6 (2024)
+26. Call of Duty: Black Ops 7 (2025/2026 - Project Endgame)
+27. Call of Duty: Modern Warfare 4 (2026 - Task Force 141 Final Strike)

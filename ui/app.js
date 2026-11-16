@@ -281,6 +281,12 @@ class CodHQApp {
 
         const tHours = document.getElementById("tickerPlaytime");
         if (tHours) tHours.innerText = `${totalHours.toFixed(1)} HRS`;
+
+        const allBtn = document.querySelector("#seriesFilterGroup .filter-pill[data-series='ALL']");
+        if (allBtn) allBtn.innerText = `ALL (${total})`;
+
+        const sOwned = document.getElementById("steamGamesOwned");
+        if (sOwned) sOwned.innerText = `${installed} / ${total}`;
     }
 
     /* ==========================================================================

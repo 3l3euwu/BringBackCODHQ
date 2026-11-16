@@ -192,6 +192,8 @@ def scan_pc_for_games(custom_search_dirs: Optional[List[str]] = None) -> Dict[st
     if not found_games:
         scanned_sources.append("Standard Windows Steam & Battle.net Locations")
         mock_installed = [
+            ("cod-mw4", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe", "Steam", 160.0),
+            ("cod-bo7", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe", "Steam", 155.0),
             ("cod-bo6", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe", "Steam", 145.0),
             ("cod-mw3-2023", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe", "Steam", 130.0),
             ("cod-warzone", "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Call of Duty HQ\\cod.exe", "Steam", 85.0),
