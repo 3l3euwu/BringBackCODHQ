@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALL OF DUTY // HQ LAUNCHER</title>
+    <link rel="icon" type="image/png" href="/assets/icons/cod_hq.png">
+    <link rel="stylesheet" href="/ui/style.css">
+</head>
+<body class="theme-olive">
+    <!-- Tactical Grid Scanlines Background -->
+    <div class="camo-bg-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- Main Container -->
+    <div id="app" class="hq-container">
+
+        <!-- Top Tactical Navigation Bar -->
+        <header class="tactical-header">
+            <div class="header-left">
+                <div class="brand-logo" onclick="app.setTab('overview')">
+                    <img src="/assets/icons/cod_hq.png" alt="COD HQ Logo" class="hq-emblem">
+                    <div class="brand-text">
+                        <span class="brand-title">CALL OF DUTY <span class="accent-slash">//</span> HQ</span>
+                        <span class="brand-sub">TACTICAL OPERATIONS COMMAND // PC LAUNCHER</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Central Nav Tabs -->
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="overview" onclick="app.setTab('overview')">
+                    <span class="tab-corner"></span>
+                    <span class="tab-label">HQ OVERVIEW</span>
+                </button>
+                <button class="nav-tab" data-tab="library" onclick="app.setTab('library')">
+                    <span class="tab-corner"></span>
+                    <span class="tab-label">FRANCHISE LIBRARY</span>
+                </button>
+                <button class="nav-tab" data-tab="scanner" onclick="app.setTab('scanner')">
+                    <span class="tab-corner"></span>
+                    <span class="tab-label">PC SCANNER <span class="scanner-badge" id="scannerBadge">READY</span></span>
+                </button>
+                <button class="nav-tab" data-tab="steam" onclick="app.setTab('steam')">
+                    <span class="tab-corner"></span>
+                    <span class="tab-label">STEAM INTEL</span>
+                </button>
+                <button class="nav-tab" data-tab="settings" onclick="app.setTab('settings')">
+                    <span class="tab-corner"></span>
+                    <span class="tab-label">SETTINGS</span>
+                </button>
+            </nav>
+
+            <!-- Header Right Status & Profile -->
+            <div class="header-right">
+                <!-- Audio Mute Toggle -->
+                <button class="audio-btn" id="audioToggleBtn" onclick="app.toggleAudio()" title="Toggle Tactical Audio FX">
+                    <span class="audio-icon" id="audioIcon">🔊</span>
+                    <span class="audio-label" id="audioLabel">SFX: ON</span>
+                </button>
+
+                <!-- Steam Profile Pill -->
+                <div class="profile-pill" onclick="app.setTab('steam')">
+                    <img src="/assets/icons/cod_hq.png" alt="Operator Avatar" class="profile-avatar" id="headerAvatar">
+                    <div class="profile-info">
+                        <div class="profile-name-row">
+                            <span class="clan-tag" id="headerClanTag">[141]</span>
+                            <span class="profile-name" id="headerPersona">GHOST_ACTUAL</span>
+                        </div>
+                        <span class="profile-status" id="headerStatus">SYS.ONLINE // LVL 155</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- System Ticker Bar -->
+        <div class="ticker-bar">
+            <div class="ticker-item">
+                <span class="ticker-dot green-dot"></span>
+                <span class="ticker-label">DEFCON 1:</span>
+                <span class="ticker-val">ALL SYSTEMS OPERATIONAL</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">FRANCHISE TITLES:</span>
+                <span class="ticker-val" id="tickerTotalGames">24 REGISTERED</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">INSTALLED READY:</span>
+                <span class="ticker-val highlight-green" id="tickerInstalledGames">12 COMBAT READY</span>
+            </div>
+            <div class="ticker-item">
+                <span class="ticker-label">TOTAL SERVICE HOURS:</span>
+                <span class="ticker-val highlight-gold" id="tickerPlaytime">2,420.5 HRS</span>
+            </div>
+            <div class="ticker-item clock-item">
+                <span class="ticker-label">TAC.TIME:</span>
+                <span class="ticker-val" id="tacticalClock">16:45:00Z</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <main class="main-viewport">
+
+            <!-- TAB 1: OVERVIEW -->
+            <section id="tab-overview" class="view-tab active">
+                <!-- Hero Spotlight Carousel -->
+                <div class="hero-spotlight" id="heroSpotlight">
+                    <div class="hero-backdrop" id="heroBackdrop"></div>
+                    <div class="hero-gradient-overlay"></div>
+                    <div class="hero-grid-hud"></div>
+
+                    <div class="hero-content">
+                        <div class="hero-tag-row">
+                            <span class="tactical-badge badge-primary" id="heroSeriesBadge">BLACK OPS</span>
+                            <span class="tactical-badge badge-gold" id="heroYearBadge">2024 DEPLOYMENT</span>
+                            <span class="tactical-badge badge-status" id="heroStatusBadge">READY FOR COMBAT</span>
+                        </div>
+
+                        <h1 class="hero-title" id="heroTitle">CALL OF DUTY: BLACK OPS 6</h1>
+                        <p class="hero-subtitle" id="heroSubtitle">THE TRUTH LIES // GULF WAR COVERT OPERATIONS</p>
+                        <p class="hero-synopsis" id="heroSynopsis">
+                            Set in the early 1990s following the Cold War, rogue operatives Troy Marshall and Frank Woods
+                            uncover a shadow conspiracy within the highest ranks of the CIA.
+                        </p>
+
+                        <!-- Hero Launch Controls -->
+                        <div class="hero-actions">
+                            <button class="btn-deploy" onclick="app.launchFeaturedGame('default')">
+                                <span class="btn-hazard-stripes"></span>
+                                <span class="deploy-icon">⚡</span>
+                                <span class="deploy-text">DEPLOY // PLAY NOW</span>
+                            </button>
+
+                            <div class="mode-pills">
+                                <button class="mode-pill" onclick="app.launchFeaturedGame('campaign')">CAMPAIGN</button>
+                                <button class="mode-pill" onclick="app.launchFeaturedGame('multiplayer')">MULTIPLAYER</button>
+                                <button class="mode-pill" onclick="app.launchFeaturedGame('zombies')">ZOMBIES</button>
+                                <button class="mode-pill" onclick="app.launchFeaturedGame('warzone')">WARZONE</button>
+                            </div>
+
+                            <button class="btn-tactical-outline" onclick="app.openDossier(app.featuredGameId)">
+                                <span>INTEL DOSSIER</span>
+                            </button>
+                        </div>
+
+                        <!-- Hero Quick Stats -->
+                        <div class="hero-stats-row">
+                            <div class="hero-stat">
+                                <span class="stat-label">RECORDED SERVICE</span>
+                                <span class="stat-val highlight-gold" id="heroPlaytime">128.5 HRS</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="stat-label">ACHIEVEMENTS</span>
+                                <span class="stat-val highlight-green" id="heroAchievements">4 / 6 UNLOCKED (67%)</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="stat-label">STORAGE ALLOCATION</span>
+                                <span class="stat-val" id="heroStorage">145 GB SSD</span>
+                            </div>
+                            <div class="hero-stat">
+                                <span class="stat-label">PLATFORM</span>
+                                <span class="stat-val" id="heroPlatform">STEAM CLIENT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Access / Favorites Bar -->
+                <div class="section-header">
+                    <div class="sec-title-wrap">
+                        <span class="sec-indicator"></span>
+                        <h2 class="section-title">QUICK DEPLOY // COMBAT READY OPERATING TITLES</h2>
+                    </div>
+                    <span class="sec-meta">DIRECT SHORTCUTS TO INSTALLED FRANCHISE RELEASES</span>
+                </div>
+
+                <div class="quick-deploy-grid" id="quickDeployGrid">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <!-- Franchise Operations Overview Cards -->
+                <div class="franchise-pillars-grid">
+                    <div class="pillar-card pillar-mw" onclick="app.filterBySeries('Modern Warfare')">
+                        <div class="pillar-content">
+                            <span class="pillar-tag">THE SAGA OF TASK FORCE 141</span>
+                            <h3>MODERN WARFARE</h3>
+                            <p>From the 2007 original through MWIII (2023). Captain Price, Ghost, and global special forces.</p>
+                            <span class="pillar-link">EXPLORE 8 TITLES &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-bo" onclick="app.filterBySeries('Black Ops')">
+                        <div class="pillar-content">
+                            <span class="pillar-tag">CLASSIFIED // SOG MISSIONS</span>
+                            <h3>BLACK OPS</h3>
+                            <p>Cold War espionage, mind control, cybernetic warfare, and round-based Zombies from Treyarch.</p>
+                            <span class="pillar-link">EXPLORE 6 TITLES &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-wz" onclick="app.filterBySeries('Warzone')">
+                        <div class="pillar-content">
+                            <span class="pillar-tag">FREE-TO-PLAY COMBAT ARENA</span>
+                            <h3>WARZONE // BATTLE ROYALE</h3>
+                            <p>Verdansk, Rebirth Island, Urzikstan, and Resurgence tactical warfare.</p>
+                            <span class="pillar-link">DEPLOY WARZONE &rarr;</span>
+                        </div>
+                    </div>
+                    <div class="pillar-card pillar-classic" onclick="app.filterBySeries('World War II')">
+                        <div class="pillar-content">
+                            <span class="pillar-tag">HISTORIC BATTLEFIELDS</span>
+                            <h3>WORLD WAR II & CLASSIC</h3>
+                            <p>Call of Duty 1, 2, World at War, and WWII. The founding heritage of boots-on-the-ground combat.</p>
+                            <span class="pillar-link">EXPLORE ARCHIVE &rarr;</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: FRANCHISE LIBRARY -->
+            <section id="tab-library" class="view-tab">
+                <!-- Library Filter & Search HUD Bar -->
+                <div class="library-filter-bar">
+                    <div class="series-filter-group" id="seriesFilterGroup">
+                        <button class="filter-pill active" data-series="ALL" onclick="app.setSeriesFilter('ALL')">ALL (24)</button>
+                        <button class="filter-pill" data-series="Modern Warfare" onclick="app.setSeriesFilter('Modern Warfare')">MODERN WARFARE</button>
+                        <button class="filter-pill" data-series="Black Ops" onclick="app.setSeriesFilter('Black Ops')">BLACK OPS</button>
+                        <button class="filter-pill" data-series="World War II" onclick="app.setSeriesFilter('World War II')">WORLD WAR II</button>
+                        <button class="filter-pill" data-series="Advanced & Futuristic" onclick="app.setSeriesFilter('Advanced & Futuristic')">FUTURISTIC / EXO</button>
+                        <button class="filter-pill" data-series="Classic Era" onclick="app.setSeriesFilter('Classic Era')">CLASSIC (2003-06)</button>
+                        <button class="filter-pill" data-series="Warzone" onclick="app.setSeriesFilter('Warzone')">WARZONE</button>
+                    </div>
+
+                    <div class="search-sort-group">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="gameSearchInput" placeholder="SEARCH CALL OF DUTY TITLES..." oninput="app.onSearchInput()">
+                            <button class="clear-search-btn" onclick="app.clearSearch()">✕</button>
+                        </div>
+
+                        <select id="statusFilter" class="tactical-select" onchange="app.renderLibrary()">
+                            <option value="all">STATUS: ALL</option>
+                            <option value="installed">INSTALLED ONLY</option>
+                            <option value="favorites">FAVORITES ONLY</option>
+                            <option value="uninstalled">AVAILABLE TO INSTALL</option>
+                        </select>
+
+                        <select id="sortOrder" class="tactical-select" onchange="app.renderLibrary()">
+                            <option value="year_desc">SORT: NEWEST FIRST</option>
+                            <option value="year_asc">SORT: CHRONOLOGICAL (2003 &rarr;)</option>
+                            <option value="playtime_desc">SORT: MOST PLAYED</option>
+                            <option value="title_asc">SORT: ALPHABETICAL</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Games Library Grid -->
+                <div class="games-grid" id="gamesGrid">
+                    <!-- Dynamic Game Cards -->
+                </div>
+            </section>
+
+            <!-- TAB 3: PC AUTO-LOCATE SCANNER -->
+            <section id="tab-scanner" class="view-tab">
+                <div class="scanner-container">
+                    <div class="scanner-hero">
+                        <div class="radar-hud">
+                            <div class="radar-circle radar-outer"></div>
+                            <div class="radar-circle radar-mid"></div>
+                            <div class="radar-circle radar-inner"></div>
+                            <div class="radar-crosshair-h"></div>
+                            <div class="radar-crosshair-v"></div>
+                            <div class="radar-sweep" id="radarSweep"></div>
+                            <div class="radar-status-center">
+                                <span class="radar-text-label">AUTO-LOCATE</span>
+                                <span class="radar-text-val" id="radarStatusText">STANDBY</span>
+                            </div>
+                        </div>
+
+                        <div class="scanner-dossier">
+                            <div class="scanner-tag">SYSTEM // AUTOMATIC PC DETECTION</div>
+                            <h2>CALL OF DUTY PC DEPLOYMENT DETECTOR</h2>
+                            <p>
+                                Auto-locate Call of Duty installations across your Windows PC drives.
+                                The detector parses Steam library folders, Battle.net agent paths,
+                                Xbox PC Game Pass storage, and custom game directories to link executables instantly.
+                            </p>
+
+                            <div class="scanner-action-row">
+                                <button class="btn-deploy" id="startScanBtn" onclick="app.triggerScan()">
+                                    <span class="deploy-icon">📡</span>
+                                    <span class="deploy-text">INITIATE DEEP PC SCAN</span>
+                                </button>
+                                <button class="btn-tactical-outline" onclick="app.applyAllDetected()">
+                                    <span>LINK ALL DETECTED GAMES</span>
+                                </button>
+                            </div>
+
+                            <!-- Custom Directory Add -->
+                            <div class="custom-dir-row">
+                                <input type="text" id="customDirInput" placeholder="Add custom folder (e.g. D:\Games\Call of Duty)">
+                                <button class="btn-tactical-sm" onclick="app.scanCustomDir()">SCAN FOLDER</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scan Results Section -->
+                    <div class="scan-results-panel">
+                        <div class="section-header">
+                            <div class="sec-title-wrap">
+                                <span class="sec-indicator"></span>
+                                <h3 class="section-title">DETECTION MANIFEST</h3>
+                            </div>
+                            <span class="sec-meta" id="scanResultsSummary">SCAN STANDBY // CLICK INITIATE TO SEARCH</span>
+                        </div>
+
+                        <div class="detected-games-table-wrap">
+                            <table class="detected-table">
+                                <thead>
+                                    <tr>
+                                        <th>TITLE</th>
+                                        <th>PLATFORM</th>
+                                        <th>DETECTED EXECUTABLE PATH</th>
+                                        <th>SIZE</th>
+                                        <th>STATUS</th>
+                                        <th>ACTION</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="detectedTableBody">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: STEAM INTEL & ACHIEVEMENTS -->
+            <section id="tab-steam" class="view-tab">
+                <div class="steam-container">
+                    <!-- Steam Profile Header Card -->
+                    <div class="steam-profile-card">
+                        <div class="steam-user-hero">
+                            <img src="/assets/icons/cod_hq.png" alt="Steam Avatar" class="steam-large-avatar" id="steamAvatar">
+                            <div class="steam-user-meta">
+                                <div class="steam-row-top">
+                                    <span class="steam-clan" id="steamClan">[141]</span>
+                                    <h2 class="steam-persona" id="steamPersona">GHOST_ACTUAL_141</h2>
+                                    <span class="steam-badge-prestige" id="steamPrestige">PRESTIGE MASTER</span>
+                                </div>
+                                <div class="steam-sub-row">
+                                    <span class="steam-id-label">STEAMID64:</span>
+                                    <span class="steam-id-val" id="steamIdVal">76561198141022141</span>
+                                    <span class="divider">|</span>
+                                    <span class="steam-status-pill" id="steamStatusPill">ONLINE // DEPLOYED</span>
+                                </div>
+                                <p class="steam-desc" id="steamRealName">Special Air Service // Task Force 141 Tactical Operator</p>
+                            </div>
+                        </div>
+
+                        <!-- Steam Stats Metrics -->
+                        <div class="steam-metrics">
+                            <div class="steam-metric-box">
+                                <span class="metric-num highlight-gold" id="steamTotalHours">2,420.5</span>
+                                <span class="metric-lbl">TOTAL COD PLAYTIME (HOURS)</span>
+                            </div>
+                            <div class="steam-metric-box">
+                                <span class="metric-num highlight-green" id="steamTotalAchievements">482</span>
+                                <span class="metric-lbl">ACHIEVEMENTS ('SUCCÈS') UNLOCKED</span>
+                            </div>
+                            <div class="steam-metric-box">
+                                <span class="metric-num" id="steamGamesOwned">21 / 24</span>
+                                <span class="metric-lbl">FRANCHISE GAMES LINKED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Steam Connect & Sync Controls -->
+                    <div class="steam-controls-card">
+                        <div class="sec-title-wrap">
+                            <span class="sec-indicator"></span>
+                            <h3 class="section-title">STEAM ACCOUNT SYNCHRONIZATION</h3>
+                        </div>
+                        <p class="steam-sync-help">
+                            Call of Duty HQ automatically detects your local Steam app files (<code>loginusers.vdf</code>, <code>libraryfolders.vdf</code>, and <code>appmanifest_*.acf</code>).
+                            You can also link your Steam ID or Web API key to pull live playtime and unlocked achievements ('succès').
+                        </p>
+
+                        <div class="steam-input-row">
+                            <div class="input-group">
+                                <label for="steamIdInput">STEAMID64 OR CUSTOM PROFILE URL</label>
+                                <input type="text" id="steamIdInput" placeholder="e.g. 76561198141022141 or ghost_actual" value="76561198141022141">
+                            </div>
+                            <div class="input-group">
+                                <label for="steamApiKeyInput">OPTIONAL STEAM WEB API KEY</label>
+                                <input type="password" id="steamApiKeyInput" placeholder="Enter key (or leave empty for local sync)">
+                            </div>
+                            <div class="btn-sync-group">
+                                <button class="btn-deploy" onclick="app.syncSteam()">
+                                    <span>SYNC STEAM DATA</span>
+                                </button>
+                                <button class="btn-tactical-outline" onclick="app.loadGhostProfile()">
+                                    <span>DEMO 141 OPERATOR</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Showcase by Title -->
+                    <div class="achievements-showcase-panel">
+                        <div class="section-header">
+                            <div class="sec-title-wrap">
+                                <span class="sec-indicator"></span>
+                                <h3 class="section-title">FRANCHISE ACHIEVEMENTS ('SUCCÈS') DOSSIER</h3>
+                            </div>
+                            <span class="sec-meta">ACTIVE SERVICE MEDALS & TROPHIES</span>
+                        </div>
+
+                        <div class="achievements-game-selector" id="achievementsGameSelector">
+                            <!-- Dynamic game selector pills -->
+                        </div>
+
+                        <div class="achievements-list-grid" id="achievementsListGrid">
+                            <!-- Dynamic achievements list -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: SETTINGS -->
+            <section id="tab-settings" class="view-tab">
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <div class="sec-title-wrap">
+                            <span class="sec-indicator"></span>
+                            <h3 class="section-title">MILITARY THEME & VISUAL CODEX</h3>
+                        </div>
+
+                        <div class="theme-picker-grid">
+                            <div class="theme-option active" data-theme="theme-olive" onclick="app.setTheme('theme-olive')">
+                                <div class="theme-preview theme-preview-olive"></div>
+                                <div class="theme-label">TACTICAL OLIVE DRAB</div>
+                                <span class="theme-sub">Task Force 141 / Modern Warfare Green</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-sand" onclick="app.setTheme('theme-sand')">
+                                <div class="theme-preview theme-preview-sand"></div>
+                                <div class="theme-label">DESERT SAND & KHAKI</div>
+                                <span class="theme-sub">Gulf War / Middle East Theatre</span>
+                            </div>
+                            <div class="theme-option" data-theme="theme-night" onclick="app.setTheme('theme-night')">
+                                <div class="theme-preview theme-preview-night"></div>
+                                <div class="theme-label">NIGHT OPS STEALTH CAMO</div>
+                                <span class="theme-sub">Deep Charcoal & Cyber Lime Glow</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="sec-title-wrap">
+                            <span class="sec-indicator"></span>
+                            <h3 class="section-title">TACTICAL AUDIO & SFX</h3>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-desc">
+                                <strong>Tactical Radio & Menu Sound Effects</strong>
+                                <span>Synthesizes authentic military clicks, deploy booms, and radio beeps on interaction.</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="settingAudioToggle" checked onchange="app.toggleAudio()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="sec-title-wrap">
+                            <span class="sec-indicator"></span>
+                            <h3 class="section-title">LAUNCHER DEPLOYMENT OPTIONS</h3>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-desc">
+                                <strong>Auto-Scan on Startup</strong>
+                                <span>Automatically scan for new Call of Duty games whenever Call of Duty HQ initializes.</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" id="settingAutoScan" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        <div class="settings-row">
+                            <div class="settings-desc">
+                                <strong>Windows Executable Bundle Location</strong>
+                                <span>Native Windows 64-bit launcher and DLL location in the repository.</span>
+                            </div>
+                            <span class="setting-pill">build/COD_HQ_Launcher.exe</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="sec-title-wrap">
+                            <span class="sec-indicator"></span>
+                            <h3 class="section-title">STANDALONE WINDOWS PC RUNTIME INFO</h3>
+                        </div>
+                        <p class="settings-info-text">
+                            This Call of Duty HQ is completely autonomous. On any Windows PC, navigate to the <code>build/</code> directory and double-click <code>COD_HQ_Launcher.exe</code> or <code>COD_HQ_Launcher.bat</code>.
+                            The application bundles <code>build/cod_hq_bridge.dll</code> for direct Win32 process creation and high-DPI awareness.
+                        </p>
+                        <div class="build-files-list">
+                            <div class="build-file-item">
+                                <span class="file-icon">⚙️</span>
+                                <span class="file-name">build/COD_HQ_Launcher.exe</span>
+                                <span class="file-desc">Native 64-bit Windows GUI Subsystem PE Binary</span>
+                            </div>
+                            <div class="build-file-item">
+                                <span class="file-icon">🧩</span>
+                                <span class="file-name">build/cod_hq_bridge.dll</span>
+                                <span class="file-desc">Win32 Native Process Launcher & Steam Dispatch DLL</span>
+                            </div>
+                            <div class="build-file-item">
+                                <span class="file-icon">📜</span>
+                                <span class="file-name">build/COD_HQ_Launcher.bat</span>
+                                <span class="file-desc">Windows Batch Bootstrap script</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- GAME DOSSIER MODAL -->
+        <div class="modal-backdrop" id="dossierModal">
+            <div class="dossier-card" id="dossierCard">
+                <button class="modal-close-btn" onclick="app.closeDossier()">✕ CLOSE</button>
+
+                <!-- Modal Banner -->
+                <div class="dossier-hero" id="modalHeroBanner">
+                    <div class="dossier-hero-overlay"></div>
+                    <div class="dossier-hero-content">
+                        <div class="hero-tag-row">
+                            <span class="tactical-badge badge-primary" id="modalSeries">MODERN WARFARE</span>
+                            <span class="tactical-badge badge-gold" id="modalYear">2024</span>
+                            <span class="tactical-badge badge-status" id="modalStatus">INSTALLED</span>
+                        </div>
+                        <h2 class="modal-title" id="modalTitle">CALL OF DUTY: BLACK OPS 6</h2>
+                        <p class="modal-sub" id="modalSub">THE TRUTH LIES // GULF WAR OPERATIONS</p>
+                    </div>
+                </div>
+
+                <!-- Modal Body Navigation -->
+                <div class="dossier-tabs-nav">
+                    <button class="dossier-tab-btn active" data-dtab="briefing" onclick="app.setDossierTab('briefing')">TACTICAL BRIEFING</button>
+                    <button class="dossier-tab-btn" data-dtab="achievements" onclick="app.setDossierTab('achievements')">ACHIEVEMENTS ('SUCCÈS')</button>
+                    <button class="dossier-tab-btn" data-dtab="specs" onclick="app.setDossierTab('specs')">PC SYSTEM SPECS</button>
+                    <button class="dossier-tab-btn" data-dtab="config" onclick="app.setDossierTab('config')">LAUNCH CONFIG & PATH</button>
+                </div>
+
+                <!-- Modal Tab Contents -->
+                <div class="dossier-body">
+                    <!-- Tab: Briefing -->
+                    <div id="dtab-briefing" class="dossier-subtab active">
+                        <div class="briefing-split">
+                            <div class="briefing-main">
+                                <h4>MISSION SYNOPSIS</h4>
+                                <p id="modalSynopsis" class="modal-synopsis-text"></p>
+
+                                <h4>AVAILABLE COMBAT MODES</h4>
+                                <div class="modes-badge-list" id="modalModesList"></div>
+
+                                <h4>INTEL DOSSIER</h4>
+                                <div class="intel-grid">
+                                    <div class="intel-box">
+                                        <span class="intel-lbl">DEVELOPER</span>
+                                        <span class="intel-val" id="modalDeveloper">Treyarch / Raven</span>
+                                    </div>
+                                    <div class="intel-box">
+                                        <span class="intel-lbl">PUBLISHER</span>
+                                        <span class="intel-val" id="modalPublisher">Activision</span>
+                                    </div>
+                                    <div class="intel-box">
+                                        <span class="intel-lbl">ENGINE</span>
+                                        <span class="intel-val" id="modalEngine">IW 9.0</span>
+                                    </div>
+                                    <div class="intel-box">
+                                        <span class="intel-lbl">STORAGE REQUIRED</span>
+                                        <span class="intel-val" id="modalStorage">145 GB</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="briefing-sidebar">
+                                <div class="cover-preview-card">
+                                    <img id="modalCoverImg" src="" alt="Game Box Cover" class="modal-cover-img">
+                                    <button class="btn-tactical-sm full-width" onclick="app.promptChangeCover()">CHANGE COVER ART</button>
+                                </div>
+
+                                <div class="modal-action-box">
+                                    <button class="btn-deploy full-width" onclick="app.launchCurrentModalGame('default')">
+                                        <span class="deploy-icon">⚡</span>
+                                        <span class="deploy-text" id="modalDeployBtnText">DEPLOY // LAUNCH</span>
+                                    </button>
+
+                                    <div class="modal-sub-actions">
+                                        <button class="btn-tactical-outline" onclick="app.openModalGameFolder()">OPEN FOLDER</button>
+                                        <button class="btn-tactical-outline" onclick="app.toggleModalFavorite()" id="modalFavBtn">★ FAVORITE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Achievements -->
+                    <div id="dtab-achievements" class="dossier-subtab">
+                        <div class="modal-achievements-header">
+                            <div class="progress-wrap">
+                                <div class="progress-label-row">
+                                    <span class="prog-title">SERVICE RECORD PROGRESS</span>
+                                    <span class="prog-count" id="modalAchProgressText">4 / 6 UNLOCKED (67%)</span>
+                                </div>
+                                <div class="progress-bar-track">
+                                    <div class="progress-bar-fill" id="modalAchProgressBar" style="width: 67%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-achievements-grid" id="modalAchievementsGrid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Tab: Specs -->
+                    <div id="dtab-specs" class="dossier-subtab">
+                        <div class="specs-grid">
+                            <div class="spec-col">
+                                <h4>MINIMUM SYSTEM SPECS</h4>
+                                <ul class="spec-list" id="modalMinSpecs"></ul>
+                            </div>
+                            <div class="spec-col">
+                                <h4>RECOMMENDED SYSTEM SPECS</h4>
+                                <ul class="spec-list" id="modalRecSpecs"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab: Config -->
+                    <div id="dtab-config" class="dossier-subtab">
+                        <div class="config-form">
+                            <div class="input-group">
+                                <label for="modalExePath">EXECUTABLE PATH (.EXE)</label>
+                                <div class="input-with-btn">
+                                    <input type="text" id="modalExePath" placeholder="C:\Games\Call of Duty\cod.exe">
+                                    <button class="btn-tactical-sm" onclick="app.saveCustomPath()">SAVE PATH</button>
+                                </div>
+                                <span class="input-hint">Specify the exact path to your local game executable or link to Steam / Battle.net folder.</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="modalLaunchArgs">CUSTOM LAUNCH ARGUMENTS</label>
+                                <div class="input-with-btn">
+                                    <input type="text" id="modalLaunchArgs" placeholder="-d3d11 -novid -fullscreen">
+                                    <button class="btn-tactical-sm" onclick="app.saveCustomArgs()">SAVE ARGS</button>
+                                </div>
+                                <span class="input-hint">Common parameters: -d3d11 (force DirectX 11), -novid (skip intro cinematic), -nosound</span>
+                            </div>
+
+                            <div class="config-actions-row">
+                                <button class="btn-tactical-outline" onclick="app.verifySteamFiles()">VERIFY FILES VIA STEAM</button>
+                                <button class="btn-tactical-outline" onclick="app.markAsInstalledToggle()" id="modalToggleInstallBtn">TOGGLE INSTALLED STATUS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOTIFICATION TOAST -->
+        <div class="toast-container" id="toastContainer"></div>
+    </div>
+
+    <script src="/ui/app.js"></script>
+</body>
+</html>
